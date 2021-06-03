@@ -17,10 +17,22 @@ int main(void) {
 
   for (int i=500; i<3000; i++) {
     pi = wallis_pi(i);
-    if (!(fabs(pi - M_PI) < 0.01)) {
+    if (!(fabs(pi - M_PI) < 0.01))
+    {
       printf("Estimate with even %d iterations is %f which is not accurate enough.\n", i, pi);
       abort();
     }
   }
+}
+float wallis_pi(int n)
+{
+  int i;
+  float k,ans=1.0;
+  for(i=1;i<=n;i++)
+  {
+   k=(float)(4*i*i)/(4*i*i-1);
+   ans=ans*k;
+  }
+ return(2*ans);
 }
 
